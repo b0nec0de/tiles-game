@@ -1,78 +1,74 @@
 import React, { Component } from "react";
-import logo from "../../logo.svg";
 import "./App.css";
+import Tiles from '../Tiles/Tiles';
+
+const initialContent = [
+	{
+		id: '01',
+		url: '../../assets/telstar.jpg'
+	},
+	{
+		id: '02',
+		url: '../../assets/brazuca.jpg'
+	},
+	{
+		id: '03',
+		url: '../../assets/jabulani.jpg'
+	},
+	{
+		id: '04',
+		url: '../../assets/teamgeist.jpg'
+	},
+	{
+		id: '05',
+		url: '../../assets/feronova.jpg'
+	},
+	{
+		id: '06',
+		url: '../../assets/tricolore.jpg'
+	},
+	{
+		id: '07',
+		url: '../../assets/etrusco.jpg'
+	},
+	{
+		id: '08',
+		url: '../../assets/azteca.jpg'
+	},
+];
 
 class App extends Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			initialContent	
+		};
+
+		this.handlePickTileContent = this.handlePickTileContent.bind(this); 
+	}
+
+	handlePickTileContent() {
+		let wholeContent = this.state.initialContent;
+		let randomTile = wholeContent[Math.floor(Math.random() * wholeContent.length)];
+		return randomTile;
+	}
+
+	// if(!selectedContent.includes(randomTile)) {
+		// 	let plusTile = selectedContent.concat([randomTile])
+		// 	console.log(plusTile);
+		// } else {
+
 	render() {
 		return (
 			<div className="App">
 				<header className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<h1 className="App-title">click on tiles</h1>
 					<button className="button" type="button">Reset</button>
 				</header>
-				<div className="container">
-					<div className="wrapper">
-						<div className="content">
-							<ul className="tile-row">
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>	
-							</ul>
-							<ul className="tile-row">
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>	
-							</ul>
-							<ul className="tile-row">
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>	
-							</ul>
-							<ul className="tile-row">
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>
-								<li className="tile-row__link">
-									<a href="#" className="tile-row__item"></a>
-								</li>	
-							</ul>
-						</div>
-					</div>
-				</div>				
+				<Tiles initial={this.state.initialContent}
+						 random={this.handlePickTileContent}
+				/>			
 			</div>
 		);
 	}

@@ -1,0 +1,29 @@
+.container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   flex: 1;
+   overflow: hidden;
+   min-height: 90vh;
+ }
+ 
+ .wrapper {
+   display: flex;
+   justify-content: center;
+ }
+ 
+ .content {
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   min-height: 100%;
+   width: 400px;
+ }
+
+ .tile-row {
+  display: flex;
+  justify-content: space-around; 
+  padding-left: 0;
+  flex-wrap: wrap;
+}
+
