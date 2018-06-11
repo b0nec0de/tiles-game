@@ -4,37 +4,45 @@ import Tiles from '../Tiles/Tiles';
 
 const initialContent = [
 	{
-		id: '01',
+		name: '2018',
+		id: Math.random(),
 		url: '../../assets/telstar.jpg'
 	},
 	{
-		id: '02',
+		name: '2014',
+		id: Math.random(),
 		url: '../../assets/brazuca.jpg'
 	},
 	{
-		id: '03',
+		name: '2010',
+		id: Math.random(),
 		url: '../../assets/jabulani.jpg'
 	},
 	{
-		id: '04',
+		name: '2006',
+		id: Math.random(),
 		url: '../../assets/teamgeist.jpg'
 	},
 	{
-		id: '05',
+		name: '2002',
+		id: Math.random(),
 		url: '../../assets/feronova.jpg'
 	},
 	{
-		id: '06',
+		name: '1998',
+		id: Math.random(),
 		url: '../../assets/tricolore.jpg'
 	},
 	{
-		id: '07',
-		url: '../../assets/etrusco.jpg'
+		name: '1994',
+		id: Math.random(),
+		url: '../../assets/questra.jpg'
 	},
 	{
-		id: '08',
-		url: '../../assets/azteca.jpg'
-	},
+		name: '1990',
+		id: Math.random(),
+		url: '../../assets/etrusco.jpg'
+	}
 ];
 
 class App extends Component {
@@ -43,7 +51,7 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			initialContent	
+			initialContent: initialContent
 		};
 
 		this.handlePickTileContent = this.handlePickTileContent.bind(this); 
@@ -52,7 +60,8 @@ class App extends Component {
 	handlePickTileContent() {
 		let wholeContent = this.state.initialContent;
 		let randomTile = wholeContent[Math.floor(Math.random() * wholeContent.length)];
-		return randomTile;
+
+			return randomTile;
 	}
 
 	// if(!selectedContent.includes(randomTile)) {
@@ -61,6 +70,7 @@ class App extends Component {
 		// } else {
 
 	render() {
+		
 		return (
 			<div className="App">
 				<header className="App-header">

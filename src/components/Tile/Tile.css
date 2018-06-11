@@ -1,4 +1,4 @@
- .tile-row__link {
+ .tile {
    display: flex;
    width: 100px;
    height: 100px;
@@ -9,3 +9,4 @@
    background-repeat: no-repeat;
    outline: none; 
  }
+

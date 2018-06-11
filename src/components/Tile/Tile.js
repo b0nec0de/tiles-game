@@ -8,13 +8,26 @@ class Tile extends Component {
       this.state = {
          isOpened: false
       }
+
+      this.openTile = this.openTile.bind(this);
+   }
+
+   openTile() {
+      
+     
+      this.setState = ({
+         isOpened: true
+      })
+      
+      
    }
 
    render() {
+       
       return (
-         <div className="tile-row__link">
-            <button className="tile-row__link"></button>
-         </div>   	
+         <div>
+            <button className="tile"></button>    
+         </div>      	
       );
    }
 }
