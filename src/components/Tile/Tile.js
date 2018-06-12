@@ -12,7 +12,12 @@ class Tile extends Component {
       this.openTile = this.openTile.bind(this);
    }
 
-   openTile() {
+   openTile(e) {
+      let _this = e.target.style;
+      _this.transform = "rotateY(180deg)";
+      _this.transition = "1s";
+      _this.backgroundImage = "url(+ ../../assets/img/telstar.jpg +)";
+      
       this.setState = ({
          isOpened: true
       }) 
@@ -32,6 +37,13 @@ class Tile extends Component {
          backgroundRepeat: 'no-repeat'
       })
 
+      const defaultStyle = {
+         backgroundImage: 'url(./assets/img/cup.jpg)',
+         backgroundSize: 'cover',
+         backgroundPosition: 'center center',
+         backgroundRepeat: 'no-repeat'
+      }
+
       return (
          <div className="content">
          {
@@ -39,9 +51,9 @@ class Tile extends Component {
                <button 
                   key={tile.id}
                   className="tile"
-                  style={divStyle(tile.src)}
+                  style={defaultStyle}
+                  onClick={this.openTile}
                >
-                  {tile.name}
                </button>              
             ))
          }    

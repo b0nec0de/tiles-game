@@ -6,42 +6,42 @@ const initialContent = [
 	{
 		name: '2018',
 		id: Math.random(),
-		src: '../../assets/img/telstar.jpg'
+		src: './assets/img/telstar.jpg'
 	},
 	{
 		name: '2014',
 		id: Math.random(),
-		src: '../../assets/img/brazuca.jpg'
+		src: './assets/img/brazuca.jpg'
 	},
 	{
 		name: '2010',
 		id: Math.random(),
-		src: '../../assets/img/jabulani.jpg'
+		src: './assets/img/jabulani.jpg'
 	},
 	{
 		name: '2006',
 		id: Math.random(),
-		src: '../../assets/img/teamgeist.jpg'
+		src: './assets/img/teamgeist.jpg'
 	},
 	{
 		name: '2002',
 		id: Math.random(),
-		src: '../../assets/img/feronova.jpg'
+		src: './assets/img/fevernova.jpg'
 	},
 	{
 		name: '1998',
 		id: Math.random(),
-		src: '../../assets/img/tricolore.jpg'
+		src: './assets/img/tricolore.jpg'
 	},
 	{
 		name: '1994',
 		id: Math.random(),
-		src: '../../assets/img/questra.jpg'
+		src: './assets/img/questra.jpg'
 	},
 	{
 		name: '1990',
 		id: Math.random(),
-		src: '../../assets/img/etrusco.jpg'
+		src: './assets/img/etrusco.jpg'
 	}
 ];
 
