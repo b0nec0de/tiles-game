@@ -1,4 +1,15 @@
-.content {
+.container {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   flex: 1;
+   overflow: hidden;
+   min-height: 90vh;
+ }
+
+
+ .content {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -13,4 +24,8 @@
    list-style: none;
    outline: none; 
  }
+ 
+ 
+
+ 
 

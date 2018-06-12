@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import "./App.css";
-import Tiles from '../Tiles/Tiles';
+import './App.css';
+import Tile from '../Tile/Tile';
+import '../Tile/Tile.css';
 
-const initialContent = [
+const dataBase = [
 	{
 		name: '2018',
 		id: Math.random(),
@@ -51,16 +52,25 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			initialContent: initialContent
+			dataBase
 		};
 
-		this.handlePickTileContent = this.handlePickTileContent.bind(this); 
+		this.getRandomTile = this.getRandomTile.bind(this); 
+		this.resetAllTiles = this.resetAllTiles.bind(this);
 	}
 
-	handlePickTileContent() {
-		let wholeContent = this.state.initialContent;
-		let randomTile = wholeContent[Math.floor(Math.random() * wholeContent.length)];
+	resetAllTiles() {
+		let opened = document.getElementsByClassName('opened');
+		let sliced = [].slice.call(opened);
+		sliced.forEach(function(item) {
+			item.style.transform = 'rotateY(0deg)';
+			item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
+		})
+	}
 
+	getRandomTile() {
+		let initialContent = this.state.dataBase;
+		let randomTile = initialContent[Math.floor(Math.random() * dataBase.length)];
 			return randomTile;
 	}
 
@@ -70,15 +80,36 @@ class App extends Component {
 		// } else {
 
 	render() {
+
+		let randomArr = [];
+      for (let i=0; i<16; i++) {
+         randomArr.push(this.getRandomTile())
+		}
 		
 		return (
 			<div className="App">
 				<header className="App-header">
-					<button className="button" type="button">Reset</button>
+					<button 
+						className="button" 
+						type="button"
+						onClick={this.resetAllTiles}
+					>
+					Reset
+					</button>
 				</header>
-				<Tiles initial={this.state.initialContent}
-						 random={this.handlePickTileContent}
-				/>			
+				<div className="container">
+					<div className="content">
+						{
+							randomArr.map(tile => (
+								<Tile 
+									key={tile.id}
+									name={tile.name}
+									back={tile.src} 
+								/>	
+							))
+						}
+					</div>
+				</div>
 			</div>
 		);
 	}

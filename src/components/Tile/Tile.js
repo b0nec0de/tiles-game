@@ -6,64 +6,50 @@ class Tile extends Component {
       super(props);
 
       this.state = {
-         isOpened: false
+         isOpen: false
       }
 
       this.openTile = this.openTile.bind(this);
    }
 
-   openTile (e) {
-      let _this = e.target.style;
-      _this.transform = "rotateY(180deg)";
-      _this.transition = "1s";
-      _this.backgroundImage = 'url(./assets/img/telstar.jpg)';
+   openTile(e,tiles) {
+      let _this = e.target;
+      let _thisStyle = e.target.style; 
+      _thisStyle.transform = "rotateY(180deg)";
+      _thisStyle.transition = "1s";
+      _thisStyle.backgroundImage = 'url(' + tiles + ')';
+      _this.classList.add('opened');
+      
       
       this.setState = ({
-         isOpened: true
+         isOpen: true
       }) 
    }
 
    render() { 
-
-      let randomArr = [];
-      for (let i=0; i<16; i++) {
-         randomArr.push(this.props.random())
-      }
-
-      const backStyle = (url) => ({
-         backgroundImage: 'url(' + url + ')',
-         backgroundSize: 'cover',
-         backgroundPosition: 'center center',
-         backgroundRepeat: 'no-repeat'
-      })
-
+   
       const defaultStyle = {
          backgroundImage: 'url(./assets/img/cup.jpg)',
          backgroundSize: 'cover',
          backgroundPosition: 'center center',
          backgroundRepeat: 'no-repeat',
       }
-
-      if(this.state.isOpened) {
-         defaultStyle.border = '1px solid green'
-      }
-
+         
       return (
-         <div className="content">
-         {
-            randomArr.map(tile => (
-               <button 
-                  key={tile.id}
-                  className="tile"
-                  style={defaultStyle}
-                  onClick={this.openTile}
-               >
-               </button>              
-            ))
-         }    
-         </div>     	
+            <button 
+               type="button" 
+               className="tile"
+               name={this.props.name} 
+               back={this.props.back}
+               key={this.props.id}
+               style={defaultStyle}
+               onClick={(e) => this.openTile(e,this.props.back)}
+            >
+            </button>          	
       );
    }
 }
 
 export default Tile;
+
+
