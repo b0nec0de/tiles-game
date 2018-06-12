@@ -13,21 +13,39 @@ class Tile extends Component {
    }
 
    openTile() {
-      
-     
       this.setState = ({
          isOpened: true
-      })
-      
-      
+      }) 
    }
 
-   render() {
-       
+   render() { 
+      
+      let randomArr = [];
+      for (let i=0; i<16; i++) {
+         randomArr.push(this.props.randommore())
+      }
+
+      const divStyle = (url) => ({
+         backgroundImage: 'url(' + url + ')',
+         backgroundSize: 'cover',
+         backgroundPosition: 'center center',
+         backgroundRepeat: 'no-repeat'
+      })
+
       return (
-         <div>
-            <button className="tile"></button>    
-         </div>      	
+         <div className="content">
+         {
+            randomArr.map(tile => (
+               <button 
+                  key={tile.id}
+                  className="tile"
+                  style={divStyle(tile.src)}
+               >
+                  {tile.name}
+               </button>              
+            ))
+         }    
+         </div>     	
       );
    }
 }
