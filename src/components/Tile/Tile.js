@@ -16,7 +16,7 @@ class Tile extends Component {
       let _this = e.target.style;
       _this.transform = "rotateY(180deg)";
       _this.transition = "1s";
-      _this.backgroundImage = "url(+ ../../assets/img/telstar.jpg +)";
+      _this.backgroundImage = "url(./assets/img/telstar.jpg)";
       
       this.setState = ({
          isOpened: true
@@ -30,7 +30,7 @@ class Tile extends Component {
          randomArr.push(this.props.randommore())
       }
 
-      const divStyle = (url) => ({
+      const backStyle = (url) => ({
          backgroundImage: 'url(' + url + ')',
          backgroundSize: 'cover',
          backgroundPosition: 'center center',
