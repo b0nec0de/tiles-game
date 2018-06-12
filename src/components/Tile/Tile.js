@@ -12,11 +12,11 @@ class Tile extends Component {
       this.openTile = this.openTile.bind(this);
    }
 
-   openTile(e) {
+   openTile (e) {
       let _this = e.target.style;
       _this.transform = "rotateY(180deg)";
       _this.transition = "1s";
-      _this.backgroundImage = "url(./assets/img/telstar.jpg)";
+      _this.backgroundImage = 'url(./assets/img/telstar.jpg)';
       
       this.setState = ({
          isOpened: true
@@ -24,10 +24,10 @@ class Tile extends Component {
    }
 
    render() { 
-      
+
       let randomArr = [];
       for (let i=0; i<16; i++) {
-         randomArr.push(this.props.randommore())
+         randomArr.push(this.props.random())
       }
 
       const backStyle = (url) => ({
@@ -41,7 +41,11 @@ class Tile extends Component {
          backgroundImage: 'url(./assets/img/cup.jpg)',
          backgroundSize: 'cover',
          backgroundPosition: 'center center',
-         backgroundRepeat: 'no-repeat'
+         backgroundRepeat: 'no-repeat',
+      }
+
+      if(this.state.isOpened) {
+         defaultStyle.border = '1px solid green'
       }
 
       return (

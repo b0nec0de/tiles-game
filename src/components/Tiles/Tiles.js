@@ -6,7 +6,7 @@ const Tiles = (props) => {
 
    return (
       <div className="container">
-         <Tile randommore={props.random} />  
+         <Tile random={props.random} />  
       </div>  
    );
 };
