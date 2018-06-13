@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './App.css';
 import Tile from '../Tile/Tile';
-import '../Tile/Tile.css';
+import icon from '../../icon.png';
 
 const dataBase = [
 	{
@@ -55,8 +55,9 @@ class App extends Component {
 			dataBase
 		};
 
+		this.getContent = this.getContent.bind(this);
 		this.compareArrayElements = this.compareArrayElements.bind(this);
-		this.getRandomTile = this.getRandomTile.bind(this); 
+		// this.getRandomTile = this.getRandomTile.bind(this); 
 		// this.resetAllTiles = this.resetAllTiles.bind(this);
 	}
 
@@ -71,25 +72,36 @@ class App extends Component {
 	// 	})
 	// }
 
-	getRandomTile() {
-		let initialContent = this.state.dataBase;
-		let randomTile = initialContent[Math.floor(Math.random() * initialContent.length)];
-			return randomTile;
-	}
+	// getRandomTile() {
+	// 	let initialContent = this.state.dataBase;
+	// 	let randomTile = initialContent[Math.floor(Math.random() * initialContent.length)];
+	// 		return randomTile;
+	// }
 
 	compareArrayElements() {
 		return  Math.random() - 0.5;
 	}
 
-	render() {
-
+	getContent() {
 		let initialContent = this.state.dataBase;
 		let doubleInitialContent = initialContent.concat(initialContent);
-		let resultContent = doubleInitialContent.sort(this.compareArrayElements)
+		let resultContent = doubleInitialContent.sort(this.compareArrayElements);
+	
+		return resultContent;
+	}
+
+
+	render() {
+
+		// let initialContent = this.state.dataBase;
+		// let doubleInitialContent = initialContent.concat(initialContent);
+		// let resultContent = doubleInitialContent.sort(this.compareArrayElements)
+		const array = this.getContent();
 		
 		return (
 			<div className="App">
 				<header className="App-header">
+				<img src={icon} className="App-logo" alt="logo" />
 					<button 
 						className="button" 
 						type="button"
@@ -101,7 +113,7 @@ class App extends Component {
 				<div className="container">
 					<div className="content">
 						{
-							resultContent.map(tile => (
+							array.map(tile => (
 								<Tile 
 									key={tile.id}
 									name={tile.name}
@@ -109,7 +121,7 @@ class App extends Component {
 								/>	
 							))
 						}
-					</div>
+					</div>	
 				</div>
 			</div>
 		);

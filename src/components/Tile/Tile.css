@@ -1,28 +1,10 @@
-.container {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   flex: 1;
-   overflow: hidden;
-   min-height: 90vh;
- }
-
-
- .content {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  min-height: 100%;
-  width: 400px; 
-}
- 
- .tile {
+  .tile {
    width: 100px;
    height: 100px;
-   border-radius: 8px;
+   border-radius: 10px;
    list-style: none;
    outline: none; 
+   cursor: pointer;
  }
  
  

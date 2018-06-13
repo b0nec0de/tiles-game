@@ -7,7 +7,7 @@ class Tile extends Component {
 
       this.state = {
          isOpen: false
-      }
+      };
 
       this.openTile = this.openTile.bind(this);
    }
@@ -19,9 +19,8 @@ class Tile extends Component {
       _thisStyle.transition = "1s";
       _thisStyle.backgroundImage = 'url(' + tiles + ')';
       _this.classList.add('opened');
-      
-      
-      this.setState = ({
+
+      this.setState ({
          isOpen: true
       }) 
    }
