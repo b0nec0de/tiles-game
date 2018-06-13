@@ -55,36 +55,37 @@ class App extends Component {
 			dataBase
 		};
 
+		this.compareArrayElements = this.compareArrayElements.bind(this);
 		this.getRandomTile = this.getRandomTile.bind(this); 
-		this.resetAllTiles = this.resetAllTiles.bind(this);
+		// this.resetAllTiles = this.resetAllTiles.bind(this);
 	}
 
-	resetAllTiles() {
-		let opened = document.getElementsByClassName('opened');
-		let sliced = [].slice.call(opened);
-		sliced.forEach(function(item) {
-			item.style.transform = 'rotateY(0deg)';
-			item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
-		})
-	}
+	// resetAllTiles() {
+
+	// 	location.reload();
+	// 	let opened = document.getElementsByClassName('opened');
+	// 	let sliced = [].slice.call(opened);
+	// 	sliced.forEach(function(item) {
+	// 		item.style.transform = 'rotateY(0deg)';
+	// 		item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
+	// 	})
+	// }
 
 	getRandomTile() {
 		let initialContent = this.state.dataBase;
-		let randomTile = initialContent[Math.floor(Math.random() * dataBase.length)];
+		let randomTile = initialContent[Math.floor(Math.random() * initialContent.length)];
 			return randomTile;
 	}
 
-	// if(!selectedContent.includes(randomTile)) {
-		// 	let plusTile = selectedContent.concat([randomTile])
-		// 	console.log(plusTile);
-		// } else {
+	compareArrayElements() {
+		return  Math.random() - 0.5;
+	}
 
 	render() {
 
-		let randomArr = [];
-      for (let i=0; i<16; i++) {
-         randomArr.push(this.getRandomTile())
-		}
+		let initialContent = this.state.dataBase;
+		let doubleInitialContent = initialContent.concat(initialContent);
+		let resultContent = doubleInitialContent.sort(this.compareArrayElements)
 		
 		return (
 			<div className="App">
@@ -92,7 +93,7 @@ class App extends Component {
 					<button 
 						className="button" 
 						type="button"
-						onClick={this.resetAllTiles}
+						onClick={() => window.location.reload()}
 					>
 					Reset
 					</button>
@@ -100,7 +101,7 @@ class App extends Component {
 				<div className="container">
 					<div className="content">
 						{
-							randomArr.map(tile => (
+							resultContent.map(tile => (
 								<Tile 
 									key={tile.id}
 									name={tile.name}
