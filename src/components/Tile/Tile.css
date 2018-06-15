@@ -1,6 +1,7 @@
   .tile {
    width: 100px;
    height: 100px;
+   align-items: center;
    border-radius: 10px;
    list-style: none;
    outline: none; 
