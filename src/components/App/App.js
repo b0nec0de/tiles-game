@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import './App.css';
 import Tile from '../Tile/Tile';
-import icon from '../../icon.png';
+// import icon from '../../icon.png';
 
 const dataBase = [
 	{
@@ -52,31 +52,23 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			dataBase
+			dataBase,
+			counter: 0
 		};
 
 		this.getContent = this.getContent.bind(this);
 		this.compareArrayElements = this.compareArrayElements.bind(this);
-		// this.getRandomTile = this.getRandomTile.bind(this); 
-		// this.resetAllTiles = this.resetAllTiles.bind(this);
+		this.resetAllTiles = this.resetAllTiles.bind(this);
 	}
 
-	// resetAllTiles() {
-
-	// 	location.reload();
-	// 	let opened = document.getElementsByClassName('opened');
-	// 	let sliced = [].slice.call(opened);
-	// 	sliced.forEach(function(item) {
-	// 		item.style.transform = 'rotateY(0deg)';
-	// 		item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
-	// 	})
-	// }
-
-	// getRandomTile() {
-	// 	let initialContent = this.state.dataBase;
-	// 	let randomTile = initialContent[Math.floor(Math.random() * initialContent.length)];
-	// 		return randomTile;
-	// }
+	resetAllTiles() {
+		let opened = document.getElementsByClassName('opened');
+		let sliced = [].slice.call(opened);
+		sliced.forEach(function(item) {
+			item.style.transform = 'rotateY(0deg)';
+			item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
+		})	
+	}
 
 	compareArrayElements() {
 		return  Math.random() - 0.5;
@@ -86,28 +78,25 @@ class App extends Component {
 		let initialContent = this.state.dataBase;
 		let doubleInitialContent = initialContent.concat(initialContent);
 		let resultContent = doubleInitialContent.sort(this.compareArrayElements);
-	
 		return resultContent;
 	}
 
 
 	render() {
-
-		// let initialContent = this.state.dataBase;
-		// let doubleInitialContent = initialContent.concat(initialContent);
-		// let resultContent = doubleInitialContent.sort(this.compareArrayElements)
 		const array = this.getContent();
 		
 		return (
 			<div className="App">
 				<header className="App-header">
-				<img src={icon} className="App-logo" alt="logo" />
+				<div className="сounter-area">
+					Количество попыток: {this.state.counter}
+				</div>
 					<button 
 						className="button" 
 						type="button"
-						onClick={() => window.location.reload()}
+						onClick={() => this.resetAllTiles()}
 					>
-					Reset
+						Reset
 					</button>
 				</header>
 				<div className="container">
@@ -117,7 +106,8 @@ class App extends Component {
 								<Tile 
 									key={tile.id}
 									name={tile.name}
-									back={tile.src} 
+									back={tile.src}
+									count={this.state.counter} 
 								/>	
 							))
 						}

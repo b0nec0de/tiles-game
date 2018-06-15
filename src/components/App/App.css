@@ -9,9 +9,15 @@
   display: flex;
   background-color: #FCFCFC;
   min-height: 50px;
-  color: white;
+  color: rgb(48, 45, 45);
   align-items: center;
+  justify-content: center;
   position: relative;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .2);
+}
+
+.сounter-area {
+
 }
 
 .button {
