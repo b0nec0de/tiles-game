@@ -43,24 +43,15 @@ class Tiles extends Component {
       super(props);
 
       this.state = {
-         dataBase,
-			counter: 0
+			dataBase
       };
-
+	
       this.getContent = this.getContent.bind(this);
 		this.compareArrayElements = this.compareArrayElements.bind(this);
-		this.resetAllTiles = this.resetAllTiles.bind(this);
-      this.openTile = this.openTile.bind(this);
+		this.openTile = this.openTile.bind(this);
+		this.numberOpenedTilesInOneTry = 0;
+		this.openedTile = '';
    }
-
-   resetAllTiles() {
-		let opened = document.getElementsByClassName('opened');
-		let sliced = [].slice.call(opened);
-		sliced.forEach(function(item) {
-			item.style.transform = 'rotateY(0deg)';
-			item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
-		})	
-	}
 
 	compareArrayElements() {
 		return  Math.random() - 0.5;
@@ -73,31 +64,41 @@ class Tiles extends Component {
 			return resultContent;
 	}
 
-   openTile(e,tiles) {
-			
-		let _this = e.target;
-		let _thisStyle = e.target.style;
-		let _thisBackstyle = e.target.attributes[3].nodeValue;
+	openTile(e,tiles) {
+	let _this = e.target;
+	let _thisStyle = e.target.style;		
+	let _thisName = e.target.attributes.name.nodeValue;
+
+	if (_this.className === 'tile') {
+		_this.classList.add('open');
+		this.numberOpenedTilesInOneTry++;
+		console.log('this.openedTile:', _thisName, this.numberOpenedTilesInOneTry);
+	
+		if  (this.numberOpenedTilesInOneTry < 2) {
 		
-			_thisStyle.transform = "rotateY(180deg)";
-			_thisStyle.transition = "1s";
-			_thisStyle.backgroundImage = 'url(' + _thisBackstyle + ')';
-			_this.className = 'tile opened';
+			this.openedTile = _this;
+	
+		} else if  (this.openedTile.attributes.name.nodeValue === _thisName) {
+			console.log('GOOOD TRY!!!');
+			this.openedTile.style.borderColor = 'red';
+			e.target.style.borderColor = 'red';
+			this.numberOpenedTilesInOneTry = 0;
+			this.openedTile = '';
+	
+		} else if  (this.openedTile.attributes.name.nodeValue !== _thisName) {
+			console.log('BAD TRY!!!');
+			this.numberOpenedTilesInOneTry = 0;
+			//закрываем обе плитки
+			this.openedTile.classList.remove('open');
+			_this.classList.remove('open');
+			this.openedTile = '';
+		}
+	} else {
+		console.log('This tile is already opened!');
+		this.numberOpenedTilesInOneTry = 0;
+	}
+}
 
-			let opened = document.getElementsByClassName('opened');
-			let sliced = [].slice.call(opened);
-
-		
-			//если открыли 2 плитки и они разные
-		if (sliced.length === 2 && sliced[0].name !== sliced[1].name) {
-
-			sliced.forEach(function(item) {
-				item.style.transform = 'rotateY(0deg)';
-				item.style.transition = '1s';
-				item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
-			})
-		}			
-   };
 
    render() {
 

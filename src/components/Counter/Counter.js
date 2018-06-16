@@ -8,7 +8,18 @@ class Counter extends Component {
       this.state = {
          counter: 0
       };
+
+      this.resetAllTiles = this.resetAllTiles.bind(this);
    };
+
+   resetAllTiles() {
+      let opened = document.getElementsByClassName('opened');
+      let sliced = [].slice.call(opened);
+      sliced.forEach(function(item) {
+            item.style.transform = 'rotateY(0deg)';
+            item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
+      })	
+}
    
    render() {
       return (
