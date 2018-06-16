@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Tiles.css';
 import Tile from '../Tile/Tile';
 
-
 const dataBase = [
 	{
 		name: '2018',
@@ -29,8 +28,8 @@ const dataBase = [
 		src: './assets/img/tricolore.jpg'
 	},
 	{
-		name: '1994',
-		src: './assets/img/questra.jpg'
+		name: '1970',
+		src: './assets/img/telstar_old.jpg'
 	},
 	{
 		name: '1990',
@@ -40,6 +39,7 @@ const dataBase = [
 
 class Tiles extends Component {
    constructor(props) {
+
       super(props);
 
       this.state = {
@@ -68,37 +68,53 @@ class Tiles extends Component {
 	let _this = e.target;
 	let _thisStyle = e.target.style;		
 	let _thisName = e.target.attributes.name.nodeValue;
+	let _thisBackstyle = e.target.attributes[3].nodeValue;
 
-	if (_this.className === 'tile') {
-		_this.classList.add('open');
-		this.numberOpenedTilesInOneTry++;
-		console.log('this.openedTile:', _thisName, this.numberOpenedTilesInOneTry);
-	
-		if  (this.numberOpenedTilesInOneTry < 2) {
+		if (_this.className === 'tile') {
+			_thisStyle.transform = "rotateY(180deg)";
+			_thisStyle.transition = ".6s";
+			_thisStyle.backgroundImage = 'url(' + _thisBackstyle + ')';
+			_this.classList.add('open');
 		
-			this.openedTile = _this;
-	
-		} else if  (this.openedTile.attributes.name.nodeValue === _thisName) {
-			console.log('GOOOD TRY!!!');
-			this.openedTile.style.borderColor = 'red';
-			e.target.style.borderColor = 'red';
-			this.numberOpenedTilesInOneTry = 0;
-			this.openedTile = '';
-	
-		} else if  (this.openedTile.attributes.name.nodeValue !== _thisName) {
-			console.log('BAD TRY!!!');
-			this.numberOpenedTilesInOneTry = 0;
-			//закрываем обе плитки
-			this.openedTile.classList.remove('open');
-			_this.classList.remove('open');
-			this.openedTile = '';
-		}
-	} else {
-		console.log('This tile is already opened!');
-		this.numberOpenedTilesInOneTry = 0;
-	}
-}
+			this.numberOpenedTilesInOneTry++;
+			console.log('this.openedTile:', _thisName, this.numberOpenedTilesInOneTry);
+		
+			if  (this.numberOpenedTilesInOneTry < 2) {
+				this.openedTile = _this;
+		
+			} else if  (this.openedTile.attributes.name.nodeValue === _thisName) {
+				console.log('GOOOD TRY!!!');
+				this.numberOpenedTilesInOneTry = 0;
+				this.openedTile = '';
+		
+			} else if  (this.openedTile.attributes.name.nodeValue !== _thisName) {
+				console.log('BAD TRY!!!');
+				_this.classList.add('wrong');
+				this.openedTile.classList.add('wrong');
 
+				let wronged = document.getElementsByClassName('wrong');
+				let sliced = [].slice.call(wronged);
+
+				setTimeout(function() {
+					sliced.forEach(function(item) {
+						item.style.transform = 'rotateY(0deg)';
+						item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
+					})
+				},1200);	
+				
+				_this.classList.remove('open', 'wrong');
+				this.openedTile.classList.remove('open', 'wrong');
+				
+				this.numberOpenedTilesInOneTry = 0;
+				this.openedTile = '';
+			}
+		}	
+		// } else {
+		// 	console.log('This tile is already opened!');
+		// 	e.target.style.borderColor = '#e45028';
+		// 	this.numberOpenedTilesInOneTry = 0;
+		// }
+	}
 
    render() {
 

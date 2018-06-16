@@ -13,7 +13,7 @@ class Counter extends Component {
    };
 
    resetAllTiles() {
-      let opened = document.getElementsByClassName('opened');
+      let opened = document.getElementsByClassName('open');
       let sliced = [].slice.call(opened);
       sliced.forEach(function(item) {
             item.style.transform = 'rotateY(0deg)';
