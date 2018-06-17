@@ -1,8 +1,8 @@
-  .tile {
+   .tile {
    width: 100px;
    height: 100px;
    align-items: center;
-   border-radius: 10px;
+   border-radius: 50%;
    list-style: none;
    outline: none; 
    cursor: pointer;

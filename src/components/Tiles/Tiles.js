@@ -32,8 +32,8 @@ const dataBase = [
 		src: './assets/img/telstar_old.jpg'
 	},
 	{
-		name: '1990',
-		src: './assets/img/etrusco.jpg'
+		name: '1994',
+		src: './assets/img/questra.jpg'
 	}
 ];
 

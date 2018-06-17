@@ -9,6 +9,7 @@ const Tile = (props) => {
 		backgroundPosition: 'center center',
 		backgroundRepeat: 'no-repeat',
 	}
+
 	return (
 		<button 
 			type="button" 
@@ -18,7 +19,7 @@ const Tile = (props) => {
 			key={props.id}
 			style={defaultStyle}
 		>
-		</button>      	
+		</button>      		
 	);
 };
 

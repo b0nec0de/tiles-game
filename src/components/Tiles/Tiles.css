@@ -2,9 +2,10 @@
    display: flex;
    flex-wrap: wrap;
    flex-direction: row;
-   width:400px;
-   height:400px;
+   width:410px;
+   height:410px;
    position: absolute;
+   justify-content: space-evenly;
    top: 50%;
    transform: translateY(-50%);
   }
