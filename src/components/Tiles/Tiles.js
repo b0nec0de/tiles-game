@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { incrementTries } from '../../actions/index';
 import './Tiles.css';
 import Tile from '../Tile/Tile';
 
@@ -71,8 +73,8 @@ class Tiles extends Component {
 	let _thisBackstyle = e.target.attributes[3].nodeValue;
 
 		if (_this.className === 'tile') {
-			_thisStyle.transform = "rotateY(180deg)";
-			_thisStyle.transition = ".6s";
+			_thisStyle.transform = "rotateY(360deg)";
+			_thisStyle.transition = "1.1s";
 			_thisStyle.backgroundImage = 'url(' + _thisBackstyle + ')';
 			_this.classList.add('open');
 		
@@ -98,13 +100,14 @@ class Tiles extends Component {
 				setTimeout(function() {
 					sliced.forEach(function(item) {
 						item.style.transform = 'rotateY(0deg)';
+						item.style.transition = "1.1s";
 						item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
 					})
-				},1200);	
+				},1500);	
 				
 				_this.classList.remove('open', 'wrong');
 				this.openedTile.classList.remove('open', 'wrong');
-				
+				this.props.incrementTries();			
 				this.numberOpenedTilesInOneTry = 0;
 				this.openedTile = '';
 			}
@@ -137,4 +140,10 @@ class Tiles extends Component {
    }
 }
 
-export default Tiles;
+const mapDispatchToProps = dispatch => {
+	return {
+		incrementTries: () => dispatch(incrementTries) 
+	};
+};
+
+export default connect (null, mapDispatchToProps)(Tiles);

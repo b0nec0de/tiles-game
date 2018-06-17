@@ -1,0 +1,3 @@
+export const INCREMENT_TRIES = 'INCREMENT_TRIES';
+
+export const RESET_TRIES = 'RESET_TRIES';
