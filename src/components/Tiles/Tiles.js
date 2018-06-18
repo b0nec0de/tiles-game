@@ -47,65 +47,58 @@ class Tiles extends Component {
       this.state = {
 			dataBase
       };
-	
+	   this.combineContent = this.combineContent.bind(this);
       this.getContent = this.getContent.bind(this);
-		this.compareArrayElements = this.compareArrayElements.bind(this);
 		this.openTile = this.openTile.bind(this);
 		this.numberOpenedTilesInOneTry = 0;
 		this.openedTile = '';
    }
 
-	compareArrayElements() {
-		return  Math.random() - 0.5;
-	}
-
-	getContent() {
-		let initialContent = this.state.dataBase;
-		let doubleInitialContent = initialContent.concat(initialContent);
-		let resultContent = doubleInitialContent.sort(this.compareArrayElements);
-			return resultContent;
+	combineContent() {
+		let initialContent = this.state.dataBase,
+		    doubleInitialContent = initialContent.concat(initialContent),
+			 resultContent = doubleInitialContent.sort(() => Math.random() - 0.5);
+				return resultContent;
 	}
 
 	openTile(e,tiles) {
-	let _this = e.target;
-	let _thisStyle = e.target.style;		
-	let _thisName = e.target.attributes.name.nodeValue;
-	let _thisBackstyle = e.target.attributes[3].nodeValue;
+		let _this = e.target,
+			_thisStyle = e.target.style,		
+			_thisName = e.target.attributes.name.nodeValue,
+			_thisBackstyle = e.target.attributes[3].nodeValue;
 
-		if (_this.className === 'tile') {
+		if (!_this.classList.contains('open')) {
 			_thisStyle.transform = "rotateY(360deg)";
 			_thisStyle.transition = "1.1s";
 			_thisStyle.backgroundImage = 'url(' + _thisBackstyle + ')';
 			_this.classList.add('open');
 		
 			this.numberOpenedTilesInOneTry++;
-			console.log('this.openedTile:', _thisName, this.numberOpenedTilesInOneTry);
 		
 			if  (this.numberOpenedTilesInOneTry < 2) {
 				this.openedTile = _this;
 		
 			} else if  (this.openedTile.attributes.name.nodeValue === _thisName) {
-				console.log('GOOOD TRY!!!');
+				
 				this.numberOpenedTilesInOneTry = 0;
 				this.openedTile = '';
 		
 			} else if  (this.openedTile.attributes.name.nodeValue !== _thisName) {
-				console.log('BAD TRY!!!');
 				_this.classList.add('wrong');
 				this.openedTile.classList.add('wrong');
 
-				let wronged = document.getElementsByClassName('wrong');
-				let sliced = [].slice.call(wronged);
+				let wronged = document.getElementsByClassName('wrong'),
+					sliced = [].slice.call(wronged);
 
 				setTimeout(function() {
 					sliced.forEach(function(item) {
 						item.style.transform = 'rotateY(0deg)';
 						item.style.transition = "1.1s";
 						item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
+						item.classList.remove('open', 'wrong');
 					})
-				},1500);	
+				},1200);	
 				
-				_this.classList.remove('open', 'wrong');
 				this.openedTile.classList.remove('open', 'wrong');
 				this.props.incrementTries();			
 				this.numberOpenedTilesInOneTry = 0;
@@ -119,22 +112,26 @@ class Tiles extends Component {
 		// }
 	}
 
-   render() {
-
-		const rawArray = this.getContent();
+	getContent() {
+		const rawArray = this.combineContent();
 		const mappedArray = rawArray.map(tile => (
-			<Tile 
-				key={Math.random()}
-				name={tile.name}
-				back={tile.src}
-				callback={this.openTile} 
-			/>	
-		))
+					<Tile 
+						key={Math.random()}
+						name={tile.name}
+						back={tile.src}
+						callback={this.openTile} 
+					/>	
+				));
+				this.props.hook(mappedArray);	
+				return mappedArray; 
+	}
+
+   render() {
 
       return (
          <div className="content"
 				onClick={(e) => this.openTile(e)}>
-				{mappedArray}
+				{this.getContent()}
 			</div>	
       );
    }

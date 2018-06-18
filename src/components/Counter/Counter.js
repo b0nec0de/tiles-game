@@ -1,18 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { resetTries } from '../../actions/index';
 import './Counter.css';
 
-class Counter extends Component {
-	constructor() {
-		super();
-
-		this.resetAllTiles = this.resetAllTiles.bind(this);
-	};
-
-	resetAllTiles() {
-		let opened = document.getElementsByClassName('open');
-		let sliced = [].slice.call(opened);
+const Counter = ({ counter, resetTries }) => {
+	
+	const resetAllTiles = () => {
+		let opened = document.getElementsByClassName('open'),
+			 sliced = [].slice.call(opened);
 			
 		if (opened !== undefined) {
 			sliced.forEach(function (item) {
@@ -20,37 +15,37 @@ class Counter extends Component {
 				item.style.transition = "1.1s";
 				item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
 				item.classList.remove('open');
-			});	
-			this.props.resetTries();
+			});
+			
+			resetTries();
 		} else {
 			
-			this.props.resetTries();
+			resetTries();
 		}		
 	}
 
-	render() {
 		return (
 			<div className="Counter">
 				<div className="сounter-area">
-					Number of Attempts :<span className="number">{this.props.counter}</span>
+					Number of Attempts :<span className="number">{counter}</span>
 				</div>
 				<button
 					className="button reset"
 					type="button"
-					onClick={() => this.resetAllTiles()}
+					onClick={() => resetAllTiles()}
 				>
 					Reset
             </button>
 			</div>
 		);
-	}
-}
+	
+};
 
 const mapStateToProps = state => {
 	return {
 		counter: state.counter
 	}
-}
+};
 
 const mapDispatchToProps = dispatch => {
 	return {
