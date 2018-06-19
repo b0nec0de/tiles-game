@@ -1,4 +1,4 @@
-.Counter {
+.counter {
    display: flex;
    align-items: center;  
 }
@@ -6,6 +6,7 @@
 .сounter-area {
   width: 205px;
   max-width: 205px;
+  /* font-weight: bold; */
 }
 
 .button.reset {

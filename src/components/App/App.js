@@ -5,13 +5,16 @@ import Counter from '../Counter/Counter';
 
 class App extends Component {
 
-	getData = (data) => {
-		
+	constructor() {
+		super();
+		this.state = {
+			
+		} 
 	}
-
+	
 	render() {
 		return (
-			<div className="App">
+			<div className="app">
 				<header className="app-header">
 					<Counter />
 				</header>

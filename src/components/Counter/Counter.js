@@ -16,18 +16,18 @@ const Counter = ({ counter, resetTries }) => {
 				item.style.backgroundImage = 'url(./assets/img/cup.jpg)';
 				item.classList.remove('open');
 			});
-			
-			resetTries();
+			setTimeout(()=>{
+				resetTries();  
+			 }, 1200)
 		} else {
-			
 			resetTries();
 		}		
 	}
 
 		return (
-			<div className="Counter">
+			<div className="counter">
 				<div className="сounter-area">
-					Number of Attempts :<span className="number">{counter}</span>
+					number of attempts :<span className="number">{counter}</span>
 				</div>
 				<button
 					className="button reset"
@@ -44,12 +44,12 @@ const Counter = ({ counter, resetTries }) => {
 const mapStateToProps = state => {
 	return {
 		counter: state.counter
-	}
+	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		resetTries: () => dispatch(resetTries)
+		resetTries: () => dispatch(resetTries())
 	};
 };
 

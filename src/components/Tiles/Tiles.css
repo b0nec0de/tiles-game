@@ -4,8 +4,5 @@
    flex-direction: row;
    width:410px;
    height:410px;
-   position: absolute;
    justify-content: space-evenly;
-   top: 50%;
-   transform: translateY(-50%);
   }
