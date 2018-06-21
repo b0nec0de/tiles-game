@@ -6,3 +6,42 @@
    height:410px;
    justify-content: space-evenly;
   }
+  
+@media (min-width: 1405px) {
+    .content {
+        width: 530px;
+        height: 530px;
+    }
+}
+
+@media (max-width: 1404px) {
+    .content {
+        width: 490px;
+        height: 490px;
+    }
+}
+
+@media (max-width: 992px) {
+   
+}
+  
+  @media (max-width: 768px) {
+    .content {
+        width: 490px;
+        height: 490px;
+    }
+}
+
+  @media (max-width: 480px) {
+      .content {
+          width: 330px;
+          height: 330px;
+      }
+  }
+
+  @media (min-width: 310px) and (max-width: 330px) {
+    .content {
+        width: 290px;
+        height: 290px;
+    }
+}

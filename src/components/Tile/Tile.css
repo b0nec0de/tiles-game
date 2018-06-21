@@ -8,3 +8,51 @@
    cursor: pointer;
    overflow: hidden;
  }
+
+@media (min-width: 1405px) {
+  .tile {
+    width: 130px; 
+    height: 130px;
+   }
+}
+
+@media (max-width: 1404px) {
+  .tile {
+    width: 120px; 
+    height: 120px;
+   }
+}
+
+@media (max-width: 992px) {
+  .tile {
+    width: 120px; 
+    height: 120px;
+   }
+}
+
+ @media (max-width: 768px) {
+  .tile {
+   width: 120px; 
+   height: 120px;
+  }
+}
+
+  @media (max-width: 480px) {
+    .tile {
+     width: 80px; 
+     height: 80px;
+    }
+}
+
+@media (min-width: 310px) and (max-width: 330px) {
+  .tile {
+    width: 70px; 
+    height: 70px;
+   }
+}
+ 
+
+ 
+
+
+

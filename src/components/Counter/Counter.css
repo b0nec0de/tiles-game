@@ -6,7 +6,6 @@
 .сounter-area {
   width: 205px;
   max-width: 205px;
-  /* font-weight: bold; */
 }
 
 .button.reset {
@@ -29,3 +28,54 @@
    text-align: center;
    color: tomato;
  }
+
+ @media (min-width: 1405px) {
+  .сounter-area {
+    font-size: 24px;
+    width: 300px;
+    max-width: 300px;
+  }
+
+  .number {
+    font-size: 30px;
+  }
+
+  .button.reset {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1404px) and (min-width: 1281px) {
+    .app-header {
+      min-height: 60px;
+  }
+    .сounter-area {
+    font-size: 22px;
+    width: 280px;
+    max-width: 280px;
+  }
+
+    .number {
+    font-size: 24px;
+  }
+
+    .button.reset {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .сounter-area {
+    font-size: 22px;
+    width: 280px;
+    max-width: 280px;
+  }
+
+  .number {
+    font-size: 24px;
+  }
+
+  .button.reset {
+    font-size: 14px;
+  }
+}

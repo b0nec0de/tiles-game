@@ -25,7 +25,23 @@
   justify-content: center;
 }
 
+@media (min-width: 1405px) {
+  .app-header {
+      min-height: 80px;
+  }
+}
 
+@media (max-width: 1404px) and (min-width: 1281px) {
+    .app-header {
+      min-height: 70px;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-header {
+      min-height: 80px;
+  }
+}
 
 
 
