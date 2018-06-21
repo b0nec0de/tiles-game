@@ -44,10 +44,10 @@
     }
 }
 
-@media (min-width: 310px) and (max-width: 330px) {
+@media (max-width: 320px) {
   .tile {
-    width: 65px; 
-    height: 65px;
+    width: 70px; 
+    height: 70px;
    }
 }
  

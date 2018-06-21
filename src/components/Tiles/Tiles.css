@@ -4,7 +4,8 @@
    flex-direction: row;
    width:410px;
    height:410px;
-   justify-content: space-evenly;
+   justify-content: space-around;
+   align-content: space-around;
   }
   
 @media (min-width: 1405px) {
@@ -39,8 +40,8 @@
       }
   }
 
-  @media (min-width: 310px) and (max-width: 330px) {
-    .content {
+  @media (max-width: 320px) {
+    .content { 
         width: 290px;
         height: 290px;
     }
