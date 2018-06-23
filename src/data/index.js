@@ -20,8 +20,8 @@ const dataBase = [
 		src: './assets/img/fevernova.jpg'
 	},
 	{
-		name: '1998',
-		src: './assets/img/tricolore.jpg'
+		name: '1982',
+		src: './assets/img/tango.jpg'
 	},
 	{
 		name: '1970',
