@@ -4,13 +4,6 @@ import Tiles from '../Tiles/Tiles';
 import Counter from '../Counter/Counter';
 
 class App extends Component {
-
-	constructor() {
-		super();
-		this.state = {
-			
-		} 
-	}
 	
 	render() {
 		return (
@@ -19,9 +12,7 @@ class App extends Component {
 					<Counter />
 				</header>
 				<div className="container">
-					<Tiles 
-						hook={this.getData}
-					/>
+					<Tiles />
 				</div>
 			</div>
 		);
