@@ -20,7 +20,7 @@ class Tiles extends Component {
 		this.props.resetTries();
 	}
 
-	openTile(e, tiles) {
+	openTile(e) {
 		let _this = e.target,
 			_thisStyle = e.target.style,
 			_thisName = e.target.attributes.name.nodeValue,
@@ -65,11 +65,6 @@ class Tiles extends Component {
 				this.openedTile = '';
 			}
 		}
-		// } else {
-		// 	console.log('This tile is already opened!');
-		// 	e.target.style.borderColor = '#e45028';
-		// 	this.numberOpenedTilesInOneTry = 0;
-		// }
 	}
 
 	mapContent() {
