@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { resetTries } from '../../actions/index';
 import './Counter.css';
 
-const Counter = ({ counter, resetTries }) => {
+function Counter({ counter, resetTries }) {
 	
 	const resetAllTiles = () => {
 		let opened = document.getElementsByClassName('open'),

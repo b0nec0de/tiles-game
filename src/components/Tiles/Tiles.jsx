@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { incrementTries, resetTries } from '../../actions/index';
 import './Tiles.css';
 import Tile from '../Tile/Tile';
 
 
-class Tiles extends Component {
+class Tiles extends React.Component {
+	
 	constructor(props) {
-
 		super(props);
 		
 		this.mapContent = this.mapContent.bind(this);

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Tile.css';
 
-const Tile = (props) => {
+function Tile(props) {
 
 	const defaultStyle = {
 		backgroundImage: 'url(./assets/img/cup.jpg)',
