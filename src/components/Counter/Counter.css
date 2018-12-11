@@ -1,81 +1,82 @@
 .counter {
-   display: flex;
-   align-items: center;  
+	display: flex;
+	align-items: center;
 }
 
 .сounter-area {
-  width: 205px;
-  max-width: 205px;
+	width: 205px;
+	max-width: 205px;
 }
 
 .button.reset {
-   text-transform: uppercase;
-   font-weight: bold;
-   color: white;
-   border: none;
-   outline: none;
-   border-radius: 5px;
-   background: #e45028;
-   padding: 9px 16px;
- }
+	text-transform: uppercase;
+	font-weight: bold;
+	color: white;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	background: #e45028;
+	padding: 9px 16px;
+	cursor: pointer;
+}
 
- .number {
-   width: 30px;
-   font-size: 22px;
-   font-weight: bold;
-   margin-left: 5px;
-   display: inline-block;
-   text-align: center;
-   color: tomato;
- }
+.number {
+	width: 30px;
+	font-size: 22px;
+	font-weight: bold;
+	margin-left: 5px;
+	display: inline-block;
+	text-align: center;
+	color: tomato;
+}
 
- @media (min-width: 1405px) {
-  .сounter-area {
-    font-size: 24px;
-    width: 300px;
-    max-width: 300px;
-  }
+@media (min-width: 1405px) {
+	.сounter-area {
+		font-size: 24px;
+		width: 300px;
+		max-width: 300px;
+	}
 
-  .number {
-    font-size: 30px;
-  }
+	.number {
+		font-size: 30px;
+	}
 
-  .button.reset {
-    font-size: 16px;
-  }
+	.button.reset {
+		font-size: 16px;
+	}
 }
 
 @media (max-width: 1404px) and (min-width: 1281px) {
-    .app-header {
-      min-height: 60px;
-  }
-    .сounter-area {
-    font-size: 22px;
-    width: 280px;
-    max-width: 280px;
-  }
+	.app-header {
+		min-height: 60px;
+	}
+	.сounter-area {
+		font-size: 22px;
+		width: 280px;
+		max-width: 280px;
+	}
 
-    .number {
-    font-size: 24px;
-  }
+	.number {
+		font-size: 24px;
+	}
 
-    .button.reset {
-    font-size: 12px;
-  }
+	.button.reset {
+		font-size: 12px;
+	}
 }
 
 @media (min-width: 768px) {
-  .сounter-area {
-    font-size: 22px;
-    width: 280px;
-    max-width: 280px;
-  }
+	.сounter-area {
+		font-size: 22px;
+		width: 280px;
+		max-width: 280px;
+	}
 
-  .number {
-    font-size: 24px;
-  }
+	.number {
+		font-size: 24px;
+	}
 
-  .button.reset {
-    font-size: 14px;
-  }
+	.button.reset {
+		font-size: 14px;
+	}
 }
